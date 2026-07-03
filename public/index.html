@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Resume Builder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css?v=2"/>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- TERMINAL PANEL -->
+  <section class="terminal">
+    <div class="terminal-header">
+      <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+      <span class="terminal-title">resume@builder:~</span>
+    </div>
+    <div id="chatLog" class="terminal-log">
+      <div class="line bot">Hi. Tell me about yourself &mdash; you can paste your whole background at once, or we can go step by step. What's your name, and a bit about your experience?</div>
+    </div>
+    <div class="terminal-input-row">
+      <span class="prompt">&gt;</span>
+      <input id="chatInput" type="text" autocomplete="off" placeholder="Type your answer…"/>
+    </div>
+  </section>
+
+  <!-- PAPER PANEL -->
+  <section class="paper-wrap">
+
+    <div class="template-picker">
+      <button class="tpl-btn active" data-template="classic">Classic ATS Friendly</button>
+      <button class="tpl-btn" data-template="sidebar">Sidebar</button>
+      <button class="tpl-btn" data-template="minimal">Minimal</button>
+      <button class="tpl-btn" data-template="bold">Bold</button>
+      <button class="tpl-btn" data-template="compact">Compact</button>
+    </div>
+
+    <div id="paper" class="paper theme-classic">
+
+      <div class="paper-header">
+        <div class="photo-col">
+          <img id="pPhoto" class="paper-photo" style="display:none"/>
+          <label for="photoInput" id="photoLabel" class="photo-label">+ Photo</label>
+          <input type="file" id="photoInput" accept="image/*" hidden/>
+        </div>
+        <div class="header-text-col">
+          <h1 id="pName" class="paper-name">Your Name</h1>
+          <p id="pContact" class="paper-contact" contenteditable="true">email · phone · location · LinkedIn · GitHub</p>
+        </div>
+      </div>
+
+      <div class="paper-section" id="summarySection">
+        <h2>PROFESSIONAL SUMMARY</h2>
+        <p id="pSummary" class="empty">Not yet provided</p>
+      </div>
+
+      <div class="paper-section" id="skillsSection">
+        <h2>TECHNICAL SKILLS</h2>
+        <p id="pSkills" class="empty">Not yet provided</p>
+      </div>
+
+      <div class="paper-section" id="experienceSection">
+        <h2>PROFESSIONAL EXPERIENCE</h2>
+        <div id="pExperience" class="empty">Not yet provided</div>
+      </div>
+
+      <div class="paper-section" id="certsSection">
+        <h2>CERTIFICATIONS &amp; TRAINING</h2>
+        <ul id="pCerts" class="empty">Not yet provided</ul>
+      </div>
+
+      <div class="paper-section" id="projectsSection">
+        <h2>KEY PROJECTS &amp; ACHIEVEMENTS</h2>
+        <ul id="pProjects" class="empty">Not yet provided</ul>
+      </div>
+
+      <div class="paper-section" id="educationSection">
+        <h2>EDUCATION</h2>
+        <div id="pEducation" class="empty">Not yet provided</div>
+      </div>
+      <div id="pAdditionalSections"></div>
+    </div>
+
+    <div class="preview-controls">
+      <button id="previewBtn" class="preview-btn">Preview CV</button>
+      <button id="downloadBtn" class="download-btn" disabled>Download PDF</button>
+      <span id="previewStatus" class="preview-status">Click Preview to refresh the resume panel, then download when ready.</span>
+    </div>
+  </section>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.122/pdf.min.js"></script>
+<script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.122/pdf.worker.min.js';</script>
+<script src="/script.js?v=2"></script>
+</body>
+</html>
