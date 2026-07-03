@@ -5,7 +5,6 @@ import re
 from PIL import Image as PILImage, ImageDraw
 from fastapi import FastAPI, Request, UploadFile, File
 from fastapi.responses import JSONResponse, StreamingResponse
-from fastapi.staticfiles import StaticFiles
 from groq import Groq
 from dotenv import load_dotenv
 from pypdf import PdfReader
@@ -731,9 +730,3 @@ async def generate_pdf(request: Request):
         buffer, media_type='application/pdf',
         headers={'Content-Disposition': f'attachment; filename="{filename}"'}
     )
-
-
-import os as _os
-_public_dir = _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))), "public")
-if _os.path.isdir(_public_dir):
-    app.mount("/", StaticFiles(directory=_public_dir, html=True), name="static")
