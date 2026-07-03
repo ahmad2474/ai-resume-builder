@@ -14,12 +14,19 @@ from reportlab.lib import colors
 from reportlab.lib.enums import TA_CENTER, TA_LEFT
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, ListFlowable, ListItem, Image as RLImage, Table, TableStyle, KeepTogether, HRFlowable
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from fastapi.responses import JSONResponse, StreamingResponse, RedirectResponse
 
 load_dotenv()
 
 app = FastAPI()
 
 client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
+
+from fastapi.responses import RedirectResponse
+
+@app.get("/")
+async def root():
+    return RedirectResponse(url="/index.html")
 
 SYSTEM_PROMPT = """You are a professional CV writer and resume assistant. Your job is to interview the candidate for missing facts, gather their full background, then rewrite it into concise, polished resume content suitable for hiring managers and applicant tracking systems.
 
