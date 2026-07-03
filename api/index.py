@@ -733,4 +733,7 @@ async def generate_pdf(request: Request):
     )
 
 
-app.mount("/", StaticFiles(directory="public", html=True), name="static")
+import os as _os
+_public_dir = _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))), "public")
+if _os.path.isdir(_public_dir):
+    app.mount("/", StaticFiles(directory=_public_dir, html=True), name="static")
