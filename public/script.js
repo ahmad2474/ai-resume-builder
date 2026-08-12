@@ -1,5 +1,6 @@
 const chatLog = document.getElementById('chatLog')
 const chatInput = document.getElementById('chatInput')
+const sendBtn = document.getElementById('sendBtn')
 const downloadBtn = document.getElementById('downloadBtn')
 const photoInput = document.getElementById('photoInput')
 const pPhoto = document.getElementById('pPhoto')
@@ -438,6 +439,16 @@ chatInput.addEventListener('keydown', (e) => {
   if (e.key === 'Enter' && chatInput.value.trim()) {
     const text = chatInput.value.trim()
     chatInput.value = ''
+    sendMessage(text)
+  }
+})
+
+// Send button for mobile users (visible via CSS on small screens)
+sendBtn?.addEventListener('click', () => {
+  if (chatInput.value.trim()) {
+    const text = chatInput.value.trim()
+    chatInput.value = ''
+    chatInput.focus()
     sendMessage(text)
   }
 })

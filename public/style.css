@@ -68,6 +68,24 @@ body {
   font-size: 14px;
 }
 
+/* Mobile send button (hidden on desktop) */
+.send-btn {
+  display: none; /* default hidden */
+  background: #2563EB;
+  color: #FFF;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+}
+.send-btn:active { transform: translateY(1px); }
+
+@media (max-width: 800px) {
+  .send-btn { display: inline-flex; align-items: center; justify-content: center; }
+}
+
 /* PAPER WRAP + TEMPLATE PICKER */
 .paper-wrap {
   background: #E5E1D8;
