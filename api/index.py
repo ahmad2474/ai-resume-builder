@@ -21,6 +21,7 @@ load_dotenv()
 app = FastAPI()
 
 client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
+GROQ_MODEL = os.environ.get("GROQ_MODEL", "openai/gpt-oss-120b")
 
 from fastapi.responses import RedirectResponse
 
@@ -125,7 +126,7 @@ async def chat(request: Request):
 
     try:
         completion = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model=GROQ_MODEL,
             messages=groq_messages,
             max_tokens=1200,
             temperature=0.7,
